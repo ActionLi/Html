@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title></title>
+	
+	<script >
+		window.onload = function(){
+			initProvince();
+			document.getElementById("city").style.display = "none";
+		}
+		function initProvince(){
+			var province = document.getElementById("province");
+			var p_opt1 = new Option("河北省","101");
+			province.add(p_opt1);
+			province.add(new Option("山东省","102"));
+			province.onchange = function(){
+				initCity(parseInt(province.value));
+			}
+		}
+		function initCity(provinceKey){
+			var city = document.getElementById("city");
+			city.style.display = "block";
+			city.options.length = 0;
+			switch(provinceKey){
+				case 101:
+			        city.add(new Option("石家庄市","101-01"));
+			        city.add(new Option("秦皇岛市","101-02"));
+			    break;
+			    case 102:
+			        city.add(new Option("青岛市","102-01"));
+			        city.add(new Option("济南市","102-02"));
+			    break;
+			    case -1:
+			        city.style.display = "none";
+			    break;
+			}
+			
+		}
+	</script>
+	
+	</head>
+	<body>
+		<select id = "province">
+			<option value="-1">--请选择--</option>
+			
+		</select>
+		<select id = "city">
+			
+		</select>
+	</body>
+</html>
